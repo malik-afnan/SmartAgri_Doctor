@@ -1,454 +1,179 @@
-Table of Contents
-1	Introduction	4
-1.1	Introduction	4
-1.2	Objectives	4
-1.3	Problem Statement	4
-1.4	Assumptions and Constraints	4
-1.4.1	Assumptions:	5
-1.4.2	Constraints:	5
-1.5	Project Scope (what and what not to consider)	5
-1.5.1	In Scope:	5
-1.5.2	Out of Scope:	5
-2	Requirement Analysis	6
-2.1	Literature review/ Existing system study	6
-2.2	Stakeholders list (Actors)	7
-2.3	Requirement Elicitation	8
-2.3.1	Functional Requirements	8
-2.3.2	Non-Functional Requirement:	8
-2.3.3	Requirement Traceability Matrix:	9
-2.4	Use Case Design	10
-2.5	Use Case Descriptions	11
-2.6	Software development lifecycle modes(justifications)	14
-3	System Design	15
-3.1	Work breakdown structure (WBS)	15
-3.2	Network diagram (Gantt chart)	15
-3.3	Activity diagram	16
-3.4	Sequence diagram	17
-3.5	Software architecture	17
-3.6	Class diagram	18
-3.7	Database diagram	19
-3.8	Collaboration diagram	20
-4	System Testing	20
-4.1	Introduction	20
-4.2	Test Cases	20
-4.3	Unit Testing	21
-4.4	Integration Testing	22
-4.5	System Testing	22
-4.6	User Acceptance Testing (UAT)	22
-5	Conclusion	23
-5.1	Problems Faced	23
-5.2	Lessons Learned	24
-5.3	Project Summary	24
-5.4	Future Work	25
-6	References	26
+# 🌱 Smart Agri Doctor – AI-Based Wheat Disease Detection System
 
- 
-1	Introduction
-1.1	Introduction
-Smart Agri Doctor is a mobile application developed to assist wheat farmers in Pakistan, especially in Mianwali, by enabling automatic disease detection using only a photo of the crop. Wheat is the main food crop of Pakistan and is grown on about 40% of the country’s total cultivated land. Mianwali alone contributes nearly 2% of Pakistan’s total wheat cultivation, and most local farmers depend on wheat for their income. In many rural regions, access to agricultural experts is limited, leading to delayed disease treatment, misuse of pesticides, and crop losses.
-The app uses machine learning models trained on the Wheat Plant Diseases Dataset to detect diseases directly from uploaded or captured images of wheat plants and identify disease types; the AI automatically analyzes the image, detects any disease, and provides suggested treatment measures.
-The AI model performs inference on the device, so the app works even without an internet connection. Additionally, Smart Agri Doctor provides basic weather information, helping farmers plan their activities according to local weather conditions.
-With this approach, Smart Agri Doctor offers an affordable, user-friendly, and practical tool for wheat disease management, bridging the gap caused by limited expert availability and empowering farmers to protect their crops effectively.
-1.2	Objectives
-The main objective of the Smart Agri Doctor project is to design and develop a mobile-based AI application that provides farmers with a practical, efficient, and easy-to-use solution for identifying and managing crop diseases. By combining artificial intelligence, image processing, and real-time data services, the application aims to improve agricultural productivity and decision-making for local farmers.
-To achieve this, the project focuses on the following key goals:
-•	Enable automatic disease detection from wheat images captured or uploaded by farmers.
-•	Suggest appropriate pesticides, fertilizers, and preventive measures for detected diseases.
-•	Provide weather information to the former.
-•	Make the system offline capable for disease detection.
-•	Design a simple and intuitive interface, supporting Urdu/English for farmers with limited technical knowledge.
-1.3	Problem Statement
-In Pakistan, farmers face big challenges because diseases in crops often go unnoticed until it's too late, pesticides are used inefficiently, and unpredictable weather makes farming even harder. Many farmers, especially those living in remote areas, don’t have easy access to agricultural experts for advice. This project aims to help by creating an affordable and easy-to-use mobile app that uses artificial intelligence to quickly identify crop diseases, suggest treatments, and provide real-time weather updates, making farming smarter and more manageable for everyone. 
-1.4	 Assumptions and Constraints
-The key assumptions made during the development of the Smart Agri-Doctor project, as well as the constraints that may impact its design, implementation, or performance
- 
-1.4.1	Assumptions:
-1.	Farmers have smartphones with cameras.
-2.	Uploaded images are clear and taken in light.
-3.	AI model is trained for common wheat diseases in Pakistan.
-4.	Farmers can navigate the app with minimal technical knowledge.
-5.	Weather API Provide weather information to the former.
-1.4.2	Constraints:
-1.	Offline detection works without internet, but weather updates require connectivity.
-2.	Data storage and farmer history tracking are not part of the initial scope.
-3.	Image analysis accuracy depends on the quality of input.
-4.	Advanced analytics and multi crop support are out of scope.
-1.5	 Project Scope (what and what not to consider)
-1.5.1	In Scope:
-This project focuses on building a helpful mobile app for farmers, especially those in Mianwali, to support them in managing crop health. The main features include the ability to upload images of crops to detect diseases, receive tailored recommendations for pesticides and fertilizers, and stay updated with local weather forecasts and alerts. The app is being developed using Flutter, making it lightweight and accessible on most smartphones. To ensure wider reach, especially in rural areas, support for the Urdu language is also included in the scope. The main features included in this version are:
-Wheat-specific disease detection:
-Farmers can upload or capture images of wheat plants, and the app will automatically identify any diseases present using a pre trained AI model.
-Automatic offline AI inference:
-Disease detection is performed directly on the device, allowing the app to work even without internet access.
-Treatment suggestions:
-The system provides tailored recommendations, including suitable pesticides, fertilizers, and preventive measures for the detected disease.
-Basic weather information:
-Provide weather information to the former.
-Simple mobile interface in Urdu/English:
-The user interface is designed to be intuitive, lightweight, and accessible, with language support for both Urdu and English to cater to users with varying literacy levels.
-Supported Wheat Diseases
-The application is designed to detect common wheat diseases and pest infestations that significantly affect crop health and yield. The AI model analyzes images uploaded by farmers and identifies visually recognizable diseases that are prevalent in wheat-growing regions of Pakistan.
-Pest Infestations:
-•	Aphid
-•	Mite
-•	Stem Fly
-Fungal and Crop Diseases:
-•	Black Rust / Stem Rust
-•	Brown Rust / Leaf Rust
-•	Yellow Rust / Stripe Rust
-•	Loose Smut
-•	Flag Smut
-•	Common Root Rot
-•	Helminthosporium Leaf Blight
-•	Wheat Blast
-•	Fusarium Head Blight (Scab)
-•	Septoria Leaf Blotch
-•	Spot Blotch
-•	Tan Spot
-•	Powdery Mildew
-The system focuses only on wheat-related diseases, and detection accuracy may vary if non-wheat or unrelated images are uploaded.
-1.5.2	Out of Scope:
-To keep the project manageable and focused on its primary objectives, the following features are not included in this version:
-Desktop or web versions:
-The application is mobile-only and does not support desktop or browser-based usage.
-Real-time expert consultation:
-Direct interaction or live chat with agricultural experts is not part of the current functionality.
-On-device AI model training:
-The AI model is pre trained and does not learn or update during app usage.
-Multi-crop detection:
-The app is limited to wheat crops and does not provide disease detection for other types of crops.
-2	Requirement Analysis
-2.1	Literature review/ Existing system study
-In recent years, various mobile applications and AI-powered tools have emerged to help detect crop diseases through image analysis. While these technologies show promising results, many existing solutions are not well-suited for local farmers in regions like Pakistan, especially in rural areas.
-Crop Disease Detection Technologies
-One of the most widely adopted techniques for identifying plant diseases is image-based recognition. In this approach, farmers use their mobile devices to take photos of infected crops, which are then analyzed using pre-trained machine learning models. This method is practical and cost-effective, as it doesn't require additional hardware or expert visits. It's also scalable, making it ideal for small to medium-scale farming communities.
-These AI models can recognize visual symptoms on leaves and stems and match them to known diseases using deep learning algorithms such as Convolutional Neural Networks (CNNs). As a result, farmers receive quick and accurate diagnoses based on real-time image processing.
-Existing Systems and Applications
-Several applications exist for diagnosing plant diseases, but most still do not meet the requirements of Pakistani farmers. Plantix [1] provides image-based disease identification and treatment suggestions; however, it lacks support for Pakistani languages and does not focus on local crops, limiting accessibility for rural users. Leaf Doctor [2] and Cropalyser [3] offer disease analysis tools, but they are research-oriented and difficult for non-technical farmers to use. AgentCrop [4] is a newer AI-based solution with treatment assistance features, but it still does not support regional crop data or multilingual access.
-In contrast, the dataset used for our system has been sourced from Kaggle [5], which contains a large set of labeled plant disease images suitable for testing and evaluating AI models used in crop disease detection.
-The table below presents a comparison of these systems with the proposed Smart Agri-Doctor app, highlighting how our system improves on existing limitations.
-App/System	Key Functionalities	What We Do Differently (Smart Agri-Doctor)
-Plantix	•	Image-based disease detection
-•	Treatment suggestions
-•	Community support
-•	Multi-crop database
-•	AI-based analysis	•	Focus on Pakistani local crops
-•	Urdu/local language support
-•	Weather alerts included
-•	Easier UI for farmers with low literacy
-Leaf Doctor	•	Leaf segmentation
-•	Research-grade analysis
-•	Disease classification
-•	Image comparison tools	•	Designed for real field use
-•	No technical complexity
-•	Fast and guided results
-Cropalyser	•	Symptom-based diagnosis
-•	Expert information
-•	Crop disorder database	•	Fully AI-dependent, no manual expertise required
-•	Instant treatment suggestion
-•	Weather and disease alerts
-AgentCrop	•	AI disease detection
-•	Simple monitoring tools
-•	Treatment advice	•	Localized crop support for Pakistan
-•	Extended features: weather forecasting + alerts
-•	Urdu/local language integration
-Kaggle Dataset (Data Source)	•	Labeled disease images
-•	Multi-crop plant dataset
-•	Used for training AI models	•	Used only as dataset, not an app
-•	Converted into a complete mobile solution for farmers
-•	No need for farmers to interact with dataset or AI
+Smart Agri Doctor is a mobile-based intelligent agriculture support system developed as a Final Year Project to assist farmers in detecting wheat crop diseases using artificial intelligence. The application enables farmers to identify diseases from crop images and receive treatment recommendations along with weather information.
 
-2.2	Stakeholders list (Actors)
-Project Developers (FYP Team):
-They are responsible for designing, developing, and testing the Smart Agri Doctor app, ensuring all features work as intended.
-Farmers (End Users):
-Farmers will use the app to detect crop diseases and receive treatment and weather advice, helping them make informed farming decisions.
-Agricultural Experts:
-They provide expert knowledge to ensure the app gives accurate disease diagnoses and appropriate pesticide or fertilizer recommendations.
-AI Model Trainers:
-These individuals train and fine-tune the AI models to accurately recognize diseases in crop images uploaded by farmers.
-Weather API Providers:
-They supply real-time weather data that the app uses to alert farmers about climate conditions affecting their crops.
-Academic Supervisor:
-The supervisor guides the student team, ensuring the project meets technical, academic, and quality standards.
-Mobile Developers:
-They are responsible for designing the app’s user interface and user experience (UI/UX), as well as integrating backend systems, including AI models and weather APIs.
-2.3	Requirement Elicitation
-The process used to gather the functional and non-functional requirements for the Smart Agri-Doctor system. Various elicitation techniques were applied to ensure the app meets the needs of its intended users and supports effective, localized agricultural solutions.
-2.3.1	Functional Requirements
-Image Upload Feature:
-The app must allow farmers to upload clear images of affected crops using their mobile phones for analysis.
-AI-Based Disease Detection:
-Once an image is uploaded, the system should use a pre-trained AI model to detect the disease and display the diagnosis to the user.
-Treatment Recommendation: 
-Based on the identified disease, the app should recommend suitable pesticides or fertilizers to help the farmer effectively treat the issue.
-Weather Forecast Integration: 
-The app should display real-time weather updates and alerts by connecting with a reliable weather API.
-Scalability for Future Updates: 
-The system must be designed to support the addition of new crop types and diseases, allowing for future expansion as needed.
-2.3.2	Non-Functional Requirement:
-Performance:
-The app should provide quick responses, offering disease diagnoses within seconds to ensure farmers get instant and actionable results in the field.
-Reliability:
-The system must be accurate and dependable, especially for common crop diseases, so that farmers can confidently follow the app's recommendations.
-Usability:
-The app should be easy to use, with a clean and intuitive interface. Future updates should include support for local languages or voice guidance to assist farmers with limited literacy.
-Scalability:
-The app should be designed in a way that makes it easy to expand in the future, whether by adding new crop types, diseases, or extra features as farming needs evolve.
-Compatibility:
-Since most farmers use Android phones, the app will be developed using Flutter to ensure it runs smoothly across a wide range of Android devices.
-2.3.3	Requirement Traceability Matrix:
-The following traceability matrix maps each system requirement to its corresponding feature or use case within the Smart Agri-Doctor application. It ensures that all key functional and non-functional requirements are properly addressed, providing a clear link between the project’s goals and the implemented components.
-Requirement ID	Description	Source	Related Feature / Use Case	Priority
-RQ-01	Farmers can upload pictures of their crops	User Needs / Functional	Upload Image, Crop Selection	High
-RQ-02	AI detects crop diseases quickly and accurately	Functional Requirement	AI Disease Detection	High
-RQ-03	Suggests helpful treatment advice	Functional Requirement	Suggest Treatment	High
-RQ-04	Shows real-time weather updates	User Needs / Enhancement	Weather Forecasting	Medium
-RQ-05	Adds support for the Urdu language	Future Enhancement	Voice/Language Support (Planned)	Low
-RQ-06	Designed to be flexible and scalable	Non-Functional Requirement	System Design / Architecture	Medium
-RQ-07	Simple, user-friendly interface	Usability Goal	UI/UX Design, Navigation Simplicity	High
+---
 
-2.4	Use Case Design
-The use case diagram illustrates the interaction between the farmer and the core functionalities of the Smart Agri-Doctor system. It highlights processes such as image upload, crop selection, weather forecasting, and disease detection using an AI system, with modular features like login, diagnosis, and treatment suggestions included for system support and efficiency.
- 
- 
-2.5	Use Case Descriptions
-1.	Upload Crop Image
- 
-Use Case Name	Upload Crop Image
-Actor	Farmer
-Description	The farmer captures or selects a photo of their crop to be analyzed.
-Precondition	The app must be open and accessible.
-Postcondition	The image is uploaded and saved for analysis.
-Main Flow	1.	Farmer opens the image upload option.
-2.	Selects or captures an image.
-3.	The image is uploaded to the app.
-Alternate Flow	The image is not selected, or the upload fails.
-2.	Show Disease Information
- 
-Use Case Name	Show Disease Information
-Actor	Mobile App
-Description	Displays name, symptoms, and images of the diagnosed disease.
-Precondition	Disease must be detected by AI.
-Postcondition	Farmer views relevant disease information.
-Main Flow	1.	The system fetches disease data.
-2.	Displays on the user screen.
-Alternate Flow	Data fetch error or no matching disease found.
+## 🚀 Overview
 
- 
-3.	Suggest Treatment
- 
-Use Case Name	Suggest Treatment
-Actor	Output Module
-Description	Based on the diagnosed disease, the system suggests suitable pesticides or fertilizers.
-Precondition	The disease must be identified.
-Postcondition	The treatment suggestion is shown to the user.
-Main Flow	1.	System queries the treatment database.
-2.	Displays the best options to the farmer.
-Alternate Flow	No treatment match found or network issue.
-4.	Weather Forecast
- 
-Use Case Name	Weather Forecast
-Actor	Weather API
-Description	Retrieves current weather data based on the farmer’s location.
-Precondition	Location permissions must be granted.
-Postcondition	A weather alert is shown with forecast data.
-Main Flow	1.	The system fetches data from the Weather API.
-2.	Parses and displays it.
-Alternate Flow	API failure or no internet.
+Agriculture plays a vital role in Pakistan’s economy, with wheat being one of the most important crops. Many farmers, especially in rural areas, face challenges such as delayed disease diagnosis, lack of expert access, and improper use of pesticides.
 
- 
-5.	Detect Disease Using AI
- 
-Use Case Name	Detect Disease Using AI
-Actor	AI System
-Description	Analyzes the uploaded image to identify any disease in the crop.
-Precondition	A valid image must be uploaded.
-Postcondition	Disease is identified and passed to the result module.
-Main Flow	1.	AI receives the image.
-2.	 Processes image using pre-trained model.
-3.	Identifies disease.
-Alternate Flow	Image not clear or unsupported crop.
-6.	Display Final Result
- 
-Use Case Name	Display Final Result
-Actor	Mobile App
-Description	Combines disease info and weather alerts into one final display.
-Precondition	Disease and weather data must be available.
-Postcondition	Farmer sees a complete diagnostic summary.
-Main Flow	1.	The result screen merges all outputs.
-2.	Shown to the user.
-Alternate Flow	Partial results are shown if data is missing.
+Smart Agri Doctor addresses these challenges by providing an AI-powered mobile application that allows farmers to capture or upload images of wheat crops and receive instant disease detection results. The system performs image analysis directly on the device, enabling offline functionality for disease detection.
 
- 
-7.	Save or Share Advice
- 
-Use Case Name	Save or Share Advice
-Actor	Farmer
-Description	Allows the farmer to save or share diagnostic results.
-Precondition	Results must be generated.
-Postcondition	File saved or shared via the selected channel.
-Main Flow	1.	Farmer clicks the Save/Share button.
-2.	Chooses a method. 3. Action completed.
-Alternate Flow	Permissions not granted or failure in sharing.
+---
 
-2.6	Software development lifecycle modes(justifications)
-For this project, the Agile methodology is the best fit because it supports flexible and ongoing development. The first version of the app will focus on the essential features like image uploading and AI-based disease detection. After releasing this initial version, the team will gather feedback from users to improve and refine the app’s features and user interface. Future updates will include useful additions such as offline functionality, support for regional languages like Urdu, and coverage of more crop types. This iterative process helps ensure the app evolves based on real user needs.
- 
-3	System Design
-3.1	Work breakdown structure (WBS)
- 
-3.2	Network diagram (Gantt chart)
- 
- 
-3.3	Activity diagram
- 
- 
-3.4	Sequence diagram
- 
-3.5	Software architecture
-  
-3.6	Class diagram
- 
- 
-3.7	Database diagram
- 
- 
-3.8	Collaboration diagram
- 
-4	System Testing
-4.1	Introduction
-	This chapter presents the testing procedures conducted to evaluate the performance, functionality, and reliability of the proposed system Smart Agri Doctor. The testing phase ensures that each component of the system works correctly both independently and as an integrated unit. The testing strategy includes unit testing, integration testing, system testing, and user acceptance testing to guarantee accurate crop disease detection, treatment suggestions, and weather updates.
-4.2	Test Cases
-	The system was tested using multiple scenarios to validate core functionalities. Each module from Crop selection to AI based disease detection and treatment recommendation was verified under different conditions, including normal, edge, and negative cases
-1.	Image Upload Testing
-TC ID	Description	Input	Expected Output	Result
-TC-01	Uploaded Valid wheat image	Photo	Uploaded successfully	Passed
-TC-02	Uploaded Corrupted file	Damaged image	Error Message Cannot Read	Passed
-TC-03	Uploaded Blank/unrelated image	No wheat	No crop detected	Pending
-2.	AI Disease Detection Testing
-TC ID	Description	Input	Expected Output	Result
-TC-07	Detect disease in affected crop	Image of infected crop	AI correctly identifies disease	Passed
-TC-08	Detect disease in healthy crop	Image of healthy crop	AI correctly returns “No disease”	Passed
-3.	Show Disease Information Testing
-TC ID	Description	Input	Expected Output	Result
-TC-10	Display information of detected wheat disease	Image of wheat processed by AI	Shows disease name, symptoms, and severity	Passed
-TC-11	Handle unknown disease detection	AI returns unknown disease	Displays message: “Information unavailable”	Passed
+## 🎯 Objectives
 
-4.	Suggest Treatment Testing
-TC ID	Description	Input	Expected Output	Result
-TC-12	Provide treatment suggestions for detected disease	Disease detected by AI	Suggests suitable pesticides, fertilizers, and preventive measures	Passed
-TC-13	Handle cases where disease is unknown	Disease not recognized	Displays message: “No treatment recommendations available”	Passed
-5.	Weather Information Testing
-TC ID	Description	Input	Expected Output	Result
-TC-14	Display weather information	Farmer’s location data	Shows current weather information	Passed
-TC-15	Update weather information	Location-based request	Displays updated weather details	Passed
-TC-16	Basic weather data availability	Weather data request	Weather information shown to farmer	Passed
-4.3	Unit Testing
-	Unit testing focused on evaluating individual modules of the Smart Agri Doctor application to ensure each component performs correctly on its own:
-Image Upload Module: Verified that farmers can upload clear images of wheat crops. Supported file types are accepted, while unsupported or corrupted images trigger appropriate prompts.
-AI Disease Detection Module: Tested the offline AI model for accurate identification of wheat diseases. Scenarios included healthy plants, single disease, and multiple disease conditions.
-Treatment Recommendation Module: Ensured that detected diseases trigger accurate suggestions for pesticides, fertilizers, and preventive measures.
-Weather Information Module: Confirmed that the application correctly retrieves and displays weather 	information based on the farmer’s location. The module was tested to ensure that weather details are shown properly to the user.
-4.4	Integration Testing
-Integration testing was conducted to ensure smooth interaction between modules:
-Image Upload → AI Disease Detection: Confirmed that uploaded wheat images are correctly processed by the AI model for disease identification.
-Disease Detection → Treatment Recommendation: Verified that the detection results trigger accurate treatment suggestions
-Weather Module Integration: Ensured that weather information is properly displayed within the application along with disease detection and treatment details.
-Full Workflow: Tested combined operations: upload → detection → treatment → weather information, ensuring seamless user experience.
-4.5	System Testing
-	System testing evaluated the full Smart Agri Doctor application in a real-world environment to confirm end to end functionality:
-Testing Objectives:
-•	Validate complete workflow: image upload, disease detection, treatment suggestions, and weather information.
-•	Ensure intuitive and accessible UI/UX for farmers, including Urdu language support.
-•	Verify AI model accuracy and consistency across multiple wheat disease scenarios.
-•	Assess speed of processing for image analysis, AI inference, treatment generation, and weather retrieval.
-•	Confirm robust error handling for unsupported images, unknown diseases, or offline mode.
-Results:
-•	Disease detection was accurate and reliable for all tested images.
-•	Treatment recommendations matched the detected diseases consistently.
-•	Weather information is displayed correctly, and the application continues to function properly in offline mode.
-•	The app ran smoothly without crashes or freezes.
-•	Users found the interface intuitive, with clear instructions for image upload, results, and weather information.
-4.6	User Acceptance Testing (UAT)
-UAT was conducted with local farmers to evaluate usability, performance, and real-world effectiveness:
-Testing Procedure:
-•	Farmers uploaded wheat crop images.
-•	Checked disease detection results.
-•	Reviewed suggested treatments.
-•	Observed weather forecasts.
-•	Provided feedback on clarity, ease of use, and overall satisfaction.
-Feedback Highlights:
-•	Majority found the app easy to navigate and use.
-•	Users reported confidence in the accuracy of disease detection.
-•	Treatment recommendations were considered actionable and helpful.
-•	Quick response time and offline functionality were appreciated.
-•	Clear instructions for image upload, disease information, and weather information reduced confusion.
-5	Conclusion
-5.1	Problems Faced
-	During the development of Smart Agri Doctor, we faced several challenges that made the project both interesting and demanding.
-1.	Limited and Inconsistent Wheat Dataset
-High-quality and well-labeled images of wheat crops were not consistently available in public datasets. Most available datasets lacked local wheat varieties or contained images with varying quality levels. As a result, the AI model was trained using mixed-quality data, which caused the system to sometimes generate predictions even when low-quality or unrelated images were uploaded. However, this also made the system more tolerant to poor image conditions, allowing it to analyze images that are not perfectly captured.
-2.	Image Quality and Misclassification Challenges
-Another challenge was handling low-quality images captured in real-field conditions. Blurry images, improper lighting, and background noise reduced prediction accuracy and, in some cases, resulted in incorrect positive detections when non-crop or random images were uploaded. This highlighted the need for stricter input validation and improved confidence thresholds, which were partially addressed during model preprocessing and testing.
-3.	Hardware and Processing Limitations
-	Training deep learning models requires strong computers, especially GPUs. With limited hardware, training and testing different AI versions took a lot of time.
-4.	Variability in Crop Appearance
-	Even the same crop can look different depending on its growth stage, environment, or disease severity. These variations made it challenging for the AI to predict diseases consistently.
-5.	Integration Challenges
-	Connecting the different parts of the app image upload, AI detection, treatment suggestions, and weather updates was tricky. Small mismatches in data formats or interfaces required extra debugging.
-6.	Real Time Performance
-	Providing fast results was tough because AI predictions and weather updates can take time to process. We had to optimize the system to give farmers near real-time feedback.
-5.2	Lessons Learned
-	Working on this project taught us many technical and practical lessons:
-1.	Understanding AI in Agriculture
-Using convolutional neural networks (CNNs) for disease detection helped us see how AI can analyze crop images and give useful advice to farmers.
-2.	Importance of Image Preprocessing
-	We realized that good quality images are essential for accurate disease detection. Cropping, adjusting lighting, and removing background noise make a big difference.
-3.	Experience in Model Evaluation
-	Evaluating models with accuracy, precision, recall, and confusion matrices taught us the importance of balanced datasets to avoid biased results.
-4.	User Friendly App Design
-	Testing with real users highlighted that farmers need a simple and intuitive interface. Clear instructions and easy navigation are very important for people with limited technical skills.
-5.	Real Time System Challenges
-We learned how important it is to optimize AI predictions and integrate weather APIs efficiently so farmers get timely and useful advice.
-5.3	Project Summary
-	The Smart Agri Doctor app successfully provides a practical solution for farmers to detect wheat diseases and get weather-based guidance.
-How the app works:
-1.	Farmers upload a photo of the affected wheat plant.
-2.	The AI model detects any disease and provides detailed information, including symptoms and severity.
-3.	The app recommends appropriate treatments, like pesticides, fertilizers, or preventive measures.
-4.	The weather module provides local forecasts and alerts, helping farmers plan their work efficiently.
-5.	By combining AI, image processing, and real time weather information, the app helps farmers protect their crops and make better decisions.
-5.4	Future Work
-1.	Expand Crop Dataset
-Add more images of wheat and other local crops to improve AI accuracy for disease detection.
-2.	Multilingual Support
-Include regional languages like Saraiki and add simple voice instructions for farmers who cannot read well.
-3.	Enhanced Weather Information
-Currently, basic weather info is shown. In the future, more detailed local weather or advisory tips for farmers can be included.
-4.	Saving and Tracking Results
-Add a feature to store detected disease results so farmers can track crop health over time.
-5.	Sharing Disease Information
-Allow farmers to share disease images and results with experts, neighbors, or local authorities for better guidance.
-6.	Disease History Analysis
-If a disease is detected, the app could suggest preventive measures or track recurrence for better decision-making.
-7.	Mobile App Improvements
-Make the app smoother and faster for real-time disease detection and easier navigation.
-8.	Expert Support Integration
-A cloud-based dashboard could let agricultural experts view disease reports and advise farmers remotely.
-9.	Crop Expansion
-In the future, include other important crops grown in Pakistan to help more farmers beyond wheat.
-10.	Community Feedback & Tips
-Farmers could provide feedback, share tips, or report local outbreaks, helping to improve AI recommendations.
- 
+* Detect wheat crop diseases using image-based analysis
+* Provide treatment recommendations including pesticides and fertilizers
+* Offer weather information to support farming decisions
+* Ensure offline capability for disease detection
+* Develop a simple and user-friendly interface for farmers
 
-6	References
+---
 
-[1] 	" Plantix," 21 May 2025. [Online]. Available: https://plantix.net/en/.
-[2] 	P. P. a. M. Nelson, "Leaf Doctor: Quantifying plant disease severity," Leaf Doctor, vol. 99 no. 10, p. 1310–1315, 2015. 
-[3] 	W. University, "Cropalyser App," 21 May 2025. [Online]. Available: https://www.wur.nl/en/research-results/projects-and-programmes/digital-innovation/cropalyser.htm. [Accessed 2025].
-[4] 	AgentCrop, "AI-powered crop disease diagnosis," AgentCrop, [Online]. Available: https://agentcrop.com. [Accessed 21 May 2025].
-[5] 	D. H. a. M. S. A. https://www.kaggle.com/datasets/emmarex/plant-disease, "PlantVillage Disease Classification Dataset [Online]," Kaggle, 2020. 
- 	
+## ❗ Problem Statement
+
+Farmers in Pakistan often struggle with:
+
+* Late detection of crop diseases
+* Limited access to agricultural experts
+* Inefficient use of pesticides
+* Unpredictable weather conditions
+
+This project provides an affordable and accessible solution by using AI to automate disease detection and assist farmers in making informed decisions.
+
+---
+
+## 🧠 Key Features
+
+* 📷 **Image-Based Disease Detection**
+  Farmers can upload or capture images of wheat crops for analysis
+
+* 🤖 **AI-Powered Diagnosis**
+  Uses a pre-trained machine learning model to detect diseases
+
+* 💊 **Treatment Recommendations**
+  Suggests pesticides, fertilizers, and preventive measures
+
+* 🌦️ **Weather Information**
+  Displays weather updates based on user location
+
+* 📱 **Offline Functionality**
+  Disease detection works without internet connectivity
+
+* 🌐 **User-Friendly Interface**
+  Designed for ease of use with support for simple navigation
+
+---
+
+## 🌾 Supported Wheat Diseases
+
+The system is designed to detect common wheat diseases and pest infestations, including:
+
+### Pest Infestations:
+
+* Aphid
+* Mite
+* Stem Fly
+
+### Fungal and Crop Diseases:
+
+* Black Rust / Stem Rust
+* Brown Rust / Leaf Rust
+* Yellow Rust / Stripe Rust
+* Loose Smut
+* Flag Smut
+* Common Root Rot
+* Helminthosporium Leaf Blight
+* Wheat Blast
+* Fusarium Head Blight
+* Septoria Leaf Blotch
+* Spot Blotch
+* Tan Spot
+* Powdery Mildew
+
+---
+
+## 🛠️ Technology Stack
+
+* **Flutter (Dart)** – Mobile application development
+* **TensorFlow Lite** – AI model deployment
+* **Python** – Model development and processing
+* **Image Processing Libraries** – Crop image analysis
+* **Weather API** – Real-time weather data
+
+---
+
+## ⚙️ System Workflow
+
+1. Farmer uploads or captures an image of a wheat plant
+2. The image is processed and analyzed using a pre-trained AI model
+3. The system detects the disease (if present)
+4. Disease information and treatment recommendations are displayed
+5. Weather data is provided to assist decision-making
+
+---
+
+## 📊 Software Metrics
+
+* **Total Lines of Code (LOC):** 1,148
+* **Source Lines of Code (SLOC):** 824
+* **Cyclomatic Complexity:** Moderate (Total: 30)
+* **Maintainability Index:** 18.6 (Moderately maintainable)
+* **Estimated Development Time:** ~3.2 months
+
+---
+
+## 🧪 Testing
+
+The system was tested using multiple approaches:
+
+* Unit Testing (individual modules)
+* Integration Testing (module interaction)
+* System Testing (complete workflow)
+* User Acceptance Testing (with real farmers)
+
+### Key Results:
+
+* Accurate disease detection for tested cases
+* Reliable treatment recommendations
+* Smooth app performance without crashes
+* Positive feedback from users on usability
+
+---
+
+## ⚠️ Challenges Faced
+
+* Limited availability of high-quality wheat datasets
+* Variations in image quality (lighting, blur, background noise)
+* Hardware limitations for training AI models
+* Integration of multiple system components
+* Ensuring real-time performance
+
+---
+
+## 📚 Lessons Learned
+
+* Importance of image preprocessing for accuracy
+* Practical application of CNNs in agriculture
+* Model evaluation using accuracy, precision, and recall
+* Designing user-friendly applications for non-technical users
+* Challenges of real-time AI systems
+
+---
+
+## 🌍 Real-World Impact
+
+* Helps farmers detect diseases early
+* Reduces crop loss and improves productivity
+* Minimizes dependency on agricultural experts
+* Promotes smart agriculture using AI
+
+---
+
+## 🔄 Future Improvements
+
+* Expand dataset for improved accuracy
+* Add support for multiple crops
+* Introduce multilingual and voice support
+* Enable result history tracking
+* Integrate expert consultation features
+* Improve mobile app performance
+
+---
 
 
+## 📬 Note
+
+This project demonstrates the application of Artificial Intelligence and mobile technologies in solving real-world agricultural problems. Further updates and enhancements are planned.
